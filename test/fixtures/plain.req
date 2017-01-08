@@ -1,0 +1,43 @@
+var http = require('http');
+
+var mod = new http.IncomingMessage();
+
+var lines = [];
+var index = 0;
+lines.push('');
+mod._read = function(size) {
+	if(index + 1 < lines.length) {
+		mod.push(lines[index] + '\r\n');
+	} else {
+		mod.push(lines[index]);
+		mod.push(null);
+	}
+	index++;
+};
+
+delete mod.domain;
+delete mod._events;
+delete mod._eventsCount;
+delete mod._maxListeners;
+delete mod.socket;
+delete mod.connection;
+delete mod.statusCode;
+delete mod.statusMessage;
+delete mod.client;
+delete mod._consuming;
+delete mod._dumped;
+
+mod.httpVersionMajor = JSON.parse('1');
+mod.httpVersionMinor = JSON.parse('1');
+mod.httpVersion = JSON.parse('"1.1"');
+mod.complete = JSON.parse('false');
+mod.headers = JSON.parse('{}');
+mod.rawHeaders = JSON.parse('[]');
+mod.trailers = JSON.parse('{}');
+mod.rawTrailers = JSON.parse('[]');
+mod.upgrade = JSON.parse('false');
+mod.url = JSON.parse('"/plain"');
+mod.method = JSON.parse('"GET"');
+
+module.exports = mod;
+

@@ -10,13 +10,19 @@
     "test": "node ./test"
   },
   "repository": {
-	  "type": "git",
-	  "url": "git://github.com/agraddy/agraddy.util.can.git"
+    "type": "git",
+    "url": "git://github.com/agraddy/agraddy.util.can.git"
   },
   "bugs": {
-	  "url": "https://github.com/agraddy/agraddy.util.can/issues"
+    "url": "https://github.com/agraddy/agraddy.util.can/issues"
   },
   "devDependencies": {
-	  "agraddy.test.tap": "^0.2.0"
+    "agraddy.luggage": "^0.2.0",
+    "agraddy.luggage.parse.post": "^0.7.0",
+    "agraddy.test.tap": "^0.2.0"
+  },
+  "dependencies": {
+    "agraddy.http.router": "^0.4.0",
+    "agraddy.test.res": "^0.5.0"
   }
 }
