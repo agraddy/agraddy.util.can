@@ -44,3 +44,8 @@ mod(require('./fixtures/multipart.req'), function(err, res) {
 	tap.assert.deepEqual(res, {four: 4, five: 5, six: 6}, 'Should return the contents as json if the content-type is json.');
 });
 
+// Handle string to request file
+mod('./fixtures/plain.req', function(err, res) {
+	tap.assert.equal(res, 'one', 'Should return the contents as a string.');
+});
+
