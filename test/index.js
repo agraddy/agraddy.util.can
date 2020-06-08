@@ -16,8 +16,11 @@ mod.get('/json', function(err, res) {
 	tap.assert.equal(res.status, 'success', 'Should return the contents as json if the content-type is json.');
 });
 
-mod.post('/post', {one: 1, two: 2, three: 3}, function(err, res) {
-	tap.assert.deepEqual(res, {one: 1, two: 2, three: 3}, 'Should return the contents as json if the content-type is json.');
+mod.post('/post', {one: 1, two: 2, three: 3}, function(err, content, res) {
+	tap.assert.deepEqual(content, {one: 1, two: 2, three: 3}, 'Should return the contents as json if the content-type is json.');
+    // Probably need to figure out a better way so that statusCode can be read. 
+    // Need to compare with bottle resposne.
+	tap.assert.equal(res._statusCode, 200, 'Should return response too.');
 });
 
 mod.post('/multipart', {four: 4, five: 5, six: 6}, {type: 'multipart'}, function(err, res) {
